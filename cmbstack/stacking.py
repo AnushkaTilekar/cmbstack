@@ -1,3 +1,6 @@
+import healpy as hp
+import numpy as np
+
 # FUNCTION 4: Find the hottest spots (peaks) - Detecting the Hottest Local Maxima
 
 #We utilize Healpy's `hotspots` algorithm to identify local maxima. 
