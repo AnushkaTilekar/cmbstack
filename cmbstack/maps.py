@@ -33,7 +33,7 @@ def dl_to_cl(ell, dl,lmax):
 
     return cl
 
-
+# Function 1
 def load_cl(path):
     """Load a power-spectrum file and return C_ell for the requested spectrum.
 
@@ -62,7 +62,7 @@ def load_cl(path):
 
     return cl
 
-
+# Function 2
 def simulate_map(cl, nside=128, seed=None):
     """Simulate a Gaussian random HEALPix map from a power spectrum.
 
@@ -110,4 +110,4 @@ def normalize_map(m, remove_monopole=True):
     m_norm : numpy.ndarray
         The normalized map, with (if monopole removed) mean ~0 and std ~1.
     """
-    return hp.remove_monopole(map) / map.std()
+    return hp.remove_monopole(m) / m.std()
