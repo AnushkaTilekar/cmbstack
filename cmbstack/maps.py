@@ -110,4 +110,5 @@ def normalize_map(m, remove_monopole=True):
     m_norm : numpy.ndarray
         The normalized map, with (if monopole removed) mean ~0 and std ~1.
     """
-    return hp.remove_monopole(m) / m.std()
+    m_norm = hp.remove_monopole(m) / m.std()
+    return m_norm
