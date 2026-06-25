@@ -2,7 +2,7 @@
 
 ## Overview
 
-`cmbstack` is a Python package for stacking patches of the Cosmic Microwave Background (CMB) temperature sky. Starting from a theoretical power spectrum, it generates a synthetic HEALPix sky map, detects local maxima, extracts gnomonic (flat-sky) patches around each peak, and averages them. This stacking procedure enhances the coherent peak profile while suppressing uncorrelated noise.
+`cmbstack` is a Python package for stacking patches of the Cosmic Microwave Background (CMB) temperature sky. Starting from a theoretical power spectrum, it generates a synthetic [HEALPix](https://healpy.readthedocs.io/en/latest/index.html) sky map, detects local maxima, extracts gnomonic (flat-sky) patches around each peak, and averages them. This stacking procedure enhances the coherent peak profile while suppressing uncorrelated noise.
 
 ## Installation
 
