@@ -104,7 +104,7 @@ def simulate_map(cl, nside=128, seed=None):
     return map
 
 
-def normalize_map(m, remove_monopole=True):
+def normalize_map(m):
     """Subtract the monopole and divide by the standard deviation.
 
     After this, peak thresholds can be expressed in units of sigma, which is the
@@ -115,15 +115,14 @@ def normalize_map(m, remove_monopole=True):
     m : array_like
         Input HEALPix map. May contain UNSEEN/NaN pixels, which are ignored in
         the mean and standard deviation.
-    remove_monopole : bool, optional
-        If True, subtract the mean (monopole) before scaling. Default True.
 
     Returns
     -------
     m_norm : numpy.ndarray
-        The normalized map, with (if monopole removed) mean ~0 and std ~1.
+        The normalized map, with mean ~0 and std ~1.
     """
-    m_norm = hp.remove_monopole(m) / m.std()
+    m_clean = hp.remove_monopole(m)
+    m_norm = m_clean / m_clean.std()
     return m_norm
 
 
