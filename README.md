@@ -1,8 +1,6 @@
 [![A rectangular badge, half black half purple containing the text made at Code Astro](https://img.shields.io/badge/Made%20at-Code/Astro-blueviolet.svg)](https://semaphorep.github.io/codeastro/)
 
-# CMB Peak Stacking Pipeline
-
-## Overview
+# cmbstack
 
 `cmbstack` is a Python package for stacking patches of the Cosmic Microwave Background (CMB) temperature sky. It accepts input as a theoretical power spectrum, a [HEALPix](https://healpy.readthedocs.io/en/latest/index.html) FITS file, or a map array already in memory. From there it detects local maxima, extracts gnomonic (flat-sky) patches around each peak, and averages them. This stacking procedure enhances the coherent peak profile while suppressing uncorrelated noise.
 
