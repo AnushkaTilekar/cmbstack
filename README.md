@@ -2,7 +2,7 @@
 
 ## Overview
 
-`cmbstack` is a Python package for stacking patches of the Cosmic Microwave Background (CMB) temperature sky. Starting from a theoretical power spectrum, it generates a synthetic [HEALPix](https://healpy.readthedocs.io/en/latest/index.html) sky map, detects local maxima, extracts gnomonic (flat-sky) patches around each peak, and averages them. This stacking procedure enhances the coherent peak profile while suppressing uncorrelated noise.
+`cmbstack` is a Python package for stacking patches of the Cosmic Microwave Background (CMB) temperature sky. It accepts input as a theoretical power spectrum, a [HEALPix](https://healpy.readthedocs.io/en/latest/index.html) FITS file, or a map array already in memory. From there it detects local maxima, extracts gnomonic (flat-sky) patches around each peak, and averages them. This stacking procedure enhances the coherent peak profile while suppressing uncorrelated noise.
 
 ## Installation
 
@@ -12,10 +12,23 @@ pip install -e .
 
 ## Quick Start
 
+**From a power spectrum file:**
 ```python
 from cmbstack.main import StackingPipeline
 
 pipeline = StackingPipeline.from_cl("path/to/spectrum.dat", nside=1024, seed=42)
+pipeline.run()
+```
+
+**From an existing FITS map:**
+```python
+pipeline = StackingPipeline.from_fits("path/to/map.fits", field=0)
+pipeline.run()
+```
+
+**From a map array already in memory:**
+```python
+pipeline = StackingPipeline.from_map(sky_map)
 pipeline.run()
 ```
 
@@ -31,6 +44,8 @@ cmbstack/
 ```
 
 ## Workflow
+
+> **Note:** Steps 1–2 apply when starting from a power spectrum. Use `StackingPipeline.from_fits` or `from_map` to skip them when working with a real or pre-simulated map.
 
 ### 1. Load the Power Spectrum — `maps.load_cl`
 
@@ -93,6 +108,33 @@ Incoherent noise averages towards zero; the coherent central profile survives.
 ### 7. Radial Profile — `stacking.radial_profile`
 
 The 2D stacked image is collapsed to a 1D profile by azimuthal averaging in concentric annuli about the centre. Returns bin-centre radii in arcminutes and the mean temperature in each annulus.
+
+---
+
+## Pipeline Constructors
+
+`StackingPipeline` provides three entry points depending on where your data comes from:
+
+| Constructor | Input | Notes |
+|---|---|---|
+| `from_cl(path, nside, seed)` | Power-spectrum file | Simulates a Gaussian random map via `healpy.synfast` |
+| `from_fits(path, field=0)` | HEALPix FITS file | Loads the map with `maps.load_map`; `nside` is inferred automatically |
+| `from_map(sky_map)` | NumPy array | Accepts any in-memory HEALPix map; `nside` is inferred automatically |
+
+All three store the map in `pipeline.map` and share the same `run()` interface.
+
+---
+
+## Map I/O Utilities
+
+`maps.load_map` and `maps.save_map` wrap the healpy FITS readers for convenience:
+
+```python
+from cmbstack import maps
+
+m = maps.load_map("map.fits", field=0)   # wraps hp.read_map
+maps.save_map("out.fits", m)             # wraps hp.write_map (overwrite=True by default)
+```
 
 ---
 

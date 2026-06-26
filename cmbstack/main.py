@@ -13,6 +13,8 @@ Typical use
 """
 
 from . import maps, stacking
+import numpy as np
+import healpy as hp
 
 
 class StackingPipeline:
@@ -52,6 +54,20 @@ class StackingPipeline:
 
         sky_map = maps.simulate_map(cl, nside, seed)
         return cls(sky_map, nside)
+    
+    @classmethod
+    def from_map(cls, sky_map):
+        """Build a pipeline from a HEALPix map array already in memory. nside is inferred from the map length, so the caller doesn't have to supply it.
+        """
+        sky_map = np.asarray(sky_map)
+        nside = hp.npix2nside(sky_map.size)
+        return cls(sky_map, nside)
+ 
+    @classmethod
+    def from_fits(cls, path, field=0):
+        """Build a pipeline from any HEALPix FITS file on disk."""
+        sky_map = maps.load_map(path, field=field)
+        return cls.from_map(sky_map)
     
 
     def run(self, size_deg=10.0, reso_arcmin=3.0, profile=True):
