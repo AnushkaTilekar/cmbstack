@@ -9,12 +9,7 @@
 Welcome to cmbstack's documentation! 
 ====================================
 
-This **cmbstack** is a package built with Python programming language, for stacking the Cosmic microwave Background (CMB) maps around data around galaxy clusters data - so that we can then study the thermal Sunyaev-Zel'dovich (i.e. the tSZ) effect using this stacking result.
-
-Key features of this cmbstack package:
-- This package generates the simulated CMB temperature maps using the user's given input power spectra.
-- While working, this package stacks the generated simulated CMB temperature maps around the galaxy cluster centers.
-- This package visualizes the results obtained from stacking with customisable plots.
+This **cmbstack** is a package built with Python programming language, for stacking the Cosmic microwave Background (CMB) maps around local maxima.
 
 
 Installation Procedure:
@@ -50,10 +45,6 @@ Quick Start Method:
 For more detailed usage, please see the API Reference section below.
 
 
-
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
 
 
 .. toctree::
