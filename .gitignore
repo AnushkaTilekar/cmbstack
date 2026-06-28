@@ -8,3 +8,6 @@ _build/
 # Distribution / packaging
 *.egg-info/
 dist/
+
+# Heavy files
+**.fits
