@@ -1,8 +1,8 @@
-[![Made at Code/Astro](https://img.shields.io/badge/Made%20at-Code/Astro-blueviolet.svg)](https://semaphorep.github.io/codeastro/)
-[![PyPI version](https://img.shields.io/pypi/v/cmbstack.svg)](https://pypi.org/project/cmbstack/)
-[![Python version](https://img.shields.io/pypi/pyversions/cmbstack.svg)](https://pypi.org/project/cmbstack/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Development Status](https://img.shields.io/badge/Status-In_Development-brightgreen.svg)
+[![Made at Code/Astro](https://img.shields.io/badge/Made%20at-Code/Astro-blueviolet)](https://semaphorep.github.io/codeastro/)
+[![PyPI version](https://img.shields.io/pypi/v/cmbstack)](https://pypi.org/project/cmbstack/)
+[![Python version](https://img.shields.io/pypi/pyversions/cmbstack)](https://pypi.org/project/cmbstack/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
+![Development Status](https://img.shields.io/badge/Status-In_Development-brightgreen)
 
 # cmbstack
 
