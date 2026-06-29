@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cmbstack"
-version = "0.0.3"
+dynamic = ["version"]
 description = "Stack patches of the CMB temperature sky around local maxima"
 readme = "README.md"
 authors = [
@@ -26,6 +26,9 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/IsaacLP/cmbstack"
 Repository = "https://github.com/IsaacLP/cmbstack.git"
+
+[tool.setuptools.dynamic]
+version = {attr = "cmbstack.__version__"}
 
 [tool.setuptools.packages.find]
 include = ["cmbstack*"]

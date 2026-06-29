@@ -12,6 +12,7 @@ import sys
 # '..' means 'go up one folder' == this will take Sphinx from the current docs folder to the main project root.
 sys.path.insert(0, os.path.abspath('..'))
 
+import cmbstack
 
 
 # -- Project information -----------------------------------------------------
@@ -20,7 +21,7 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'cmbstack'
 copyright = '2026, Isaac Alexis López Paredes, Anushka Sanjay Tilekar'
 author = 'Isaac Alexis López Paredes, Anushka Sanjay Tilekar'
-release = '0.0.1'
+version = cmbstack.__version__
 root_doc = 'index'  # root_doc tells Sphinx which .rst file is your main homepage. 
                     # It's set to 'index' by default (which matches your index.rst file), 
                     # so you're fine either way. If you don't add it, 
