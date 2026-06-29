@@ -24,7 +24,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/IsaacLP/cmbstack"
+Homepage = "https://cmbstack-docs.readthedocs.io/en/latest/index.html"
 Repository = "https://github.com/IsaacLP/cmbstack.git"
 
 [tool.setuptools.dynamic]
