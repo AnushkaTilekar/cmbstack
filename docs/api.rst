@@ -1,10 +1,10 @@
 API Reference
 =============
 
-cmbstack.main
--------------
+cmbstack.StackingPipeline
+-------------------------
 
-.. automodule:: cmbstack.main
+.. autoclass:: cmbstack.StackingPipeline
    :members:
    :undoc-members:
    :show-inheritance:

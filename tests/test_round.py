@@ -6,8 +6,7 @@ import tempfile
 
 sys.path.append("..")
 
-from cmbstack.main import StackingPipeline
-from cmbstack import maps
+from cmbstack import StackingPipeline, maps
 
 def test_fits_roundtrip(tmp_path):
     '''Test that the Stacking Pipeline gives the same result from a map saved in memory and loading a .fits file'''

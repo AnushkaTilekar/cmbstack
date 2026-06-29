@@ -28,7 +28,7 @@ pip install -e .
 
 **From a power spectrum file:**
 ```python
-from cmbstack.main import StackingPipeline
+from cmbstack import StackingPipeline
 
 pipeline = StackingPipeline.from_cl("path/to/spectrum.cl", nside=1024, seed=42)
 stacked_result = pipeline.run()

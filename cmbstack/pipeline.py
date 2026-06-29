@@ -34,6 +34,16 @@ class StackingPipeline:
     ----------
     normalized : numpy.ndarray or None
         Set after run(); the normalized map.
+    positions : numpy.ndarray or None
+        Set after run(); the peak positions in (theta, phi) radians.
+    patches : numpy.ndarray or None
+        Set after run(); the extracted patches.
+    stacked : numpy.ndarray or None
+        Set after run(); the stacked image.
+    radius : numpy.ndarray or None
+        Set after run(); the radial distances of the profile in arcmin.
+    profile : numpy.ndarray or None
+        Set after run(); the radial profile of the stacked image.
     """
 
     def __init__(self, sky_map, nside):
@@ -86,7 +96,9 @@ class StackingPipeline:
 
         Returns
         -------
-        result : cmbstack.stack.StackResult
+        self : StackingPipeline
+            The pipeline object itself, with all intermediate products stored as
+            attributes.
         """
 
         self.normalized = maps.normalize_map(self.map)
@@ -101,3 +113,5 @@ class StackingPipeline:
             self.radius, self.profile = stacking.radial_profile(self.stacked,reso_arcmin=reso_arcmin)
 
         return self
+
+StackingPipeline.__module__ = "cmbstack"
