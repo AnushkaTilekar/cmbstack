@@ -13,6 +13,7 @@ power spectrum (temperature TT, lensing convergence, y-map, ...).
 
 import numpy as np
 import healpy as hp
+import pandas as pd
 
 
 def dl_to_cl(ell, dl,lmax):
@@ -47,7 +48,7 @@ def dl_to_cl(ell, dl,lmax):
     return cl
 
 # Function 1
-def load_cl(path):
+def load_cl(path, column="TT"):
     """Load a power-spectrum file and return C_ell for the requested spectrum.
 
     The expected file columns are ell, Dl_TT, Dl_TE, Dl_EE, Dl_BB, Dl_dd, with
@@ -68,10 +69,18 @@ def load_cl(path):
         C_ell array indexed from ell=0, suitable for passing to
         :func:`simulate_map`.
     """
-    ell, dl = np.loadtxt(path,usecols=(0,1),unpack=True)
-    ell = ell.astype(int)
-    lmax = ell.max()  
-    cl = dl_to_cl(ell,dl,lmax)
+
+    df = pd.read_csv(
+        path,
+        sep=r"\s+",
+        comment="#",
+        header=None,
+        names=["L", "TT", "TE", "EE", "BB", "PP"],
+    )
+    ell = df['L'].values.astype(int)
+    dl = df[column].values
+    lmax = ell.max()
+    cl = dl_to_cl(ell, dl, lmax)
 
     return cl
 
