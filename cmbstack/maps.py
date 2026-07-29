@@ -47,12 +47,13 @@ def dl_to_cl(ell, dl,lmax):
 
     return cl
 
-# Function 1
+
 def load_cl(path, column="TT"):
     """Load a power-spectrum file and return C_ell for the requested spectrum.
 
-    The expected file columns are ell, Dl_TT, Dl_TE, Dl_EE, Dl_BB, Dl_dd, with
-    D_ell in uK^2. The chosen column is converted from D_ell to C_ell via
+    The expected file columns are ell, Dl_TT, Dl_TE, Dl_EE, Dl_BB, Dl_pp, with
+    D_ell in uK^2 (with names L, TT, TE, EE, BB, PP).
+    The chosen column is converted from D_ell to C_ell via
     :func:`dl_to_cl` before being returned.
 
     Parameters
@@ -60,7 +61,7 @@ def load_cl(path, column="TT"):
     path : str
         Path to the whitespace-delimited spectrum file.
     column : str, optional
-        Which spectrum to return: one of "TT", "TE", "EE", "BB", "dd".
+        Which spectrum to return: one of "TT", "TE", "EE", "BB", "PP".
         Default "TT".
 
     Returns
@@ -84,7 +85,7 @@ def load_cl(path, column="TT"):
 
     return cl
 
-# Function 2
+
 def simulate_map(cl, nside=128, seed=None):
     """Simulate a Gaussian random HEALPix map from a power spectrum.
 
